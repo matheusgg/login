@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  mongodb:
+    image: mongo
+    stdin_open: true
+    tty: true
+    ports:
+     - "50011:27017"
+  redis:
+    image: redis
+    stdin_open: true
+    tty: true
+    ports:
+     - "50012:6379"
+  security-service:
+    image: security-service
+    ports:
+     - "8080:8080"
+    depends_on:
+     - mongodb
+     - redis
+  ui-app:
+    image: ui-app
+    ports:
+     - "8081:8081"
+    depends_on:
+     - security-service

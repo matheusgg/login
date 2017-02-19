@@ -1,0 +1,26 @@
+[
+  {
+	"_class": "br.com.security.model.Client",
+	"clientId": "trust",
+	"clientSecret": "secret",
+	"resourceIds": [
+	  "restservice"
+	],
+	"scope": [
+	  "read",
+	  "write"
+	],
+	"authorizedGrantTypes": [
+	  "authorization_code",
+	  "refresh_token",
+	  "implicit",
+	  "password",
+	  "client_credentials"
+	],
+	"registeredRedirectUri": [],
+	"authorities": [],
+	"accessTokenValiditySeconds": 300.0,
+	"refreshTokenValiditySeconds": null,
+	"autoApproveScopes": []
+  }
+]

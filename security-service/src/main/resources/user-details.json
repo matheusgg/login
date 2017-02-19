@@ -1,0 +1,16 @@
+[
+  {
+	"_class": "br.com.security.model.User",
+	"username": "test",
+	"password": "$2a$10$z80iomq1JNlHv6TQyfyl7umeWK/cYEz/KsR0myrYGKtxM0g0ExpLi",
+	"accountNonExpired": true,
+	"accountNonLocked": true,
+	"credentialsNonExpired": true,
+	"enabled": true,
+	"roles": [
+	  "ADMIN",
+	  "ROOT",
+	  "SUPER_USER"
+	]
+  }
+]

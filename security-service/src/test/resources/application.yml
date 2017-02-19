@@ -1,0 +1,8 @@
+security:
+  ignored: /users/**/profiles
+
+br.com.security.jwt:
+  alias: jwtKey
+  store-pass: simpleStorePass
+  key-store: classpath:keystore.jks
+  key-pass: simpleKeyPass

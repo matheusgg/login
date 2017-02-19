@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>br.com.ui</groupId>
+	<artifactId>ui-app</artifactId>
+	<version>1.0.0.RELEASE</version>
+	<packaging>jar</packaging>
+
+	<name>ui-app</name>
+	<description>UI App Sample</description>
+
+	<parent>
+		<groupId>br.com.login</groupId>
+		<artifactId>login</artifactId>
+		<version>1.0.0.RELEASE</version>
+	</parent>
+
+	<properties>
+		<wro4j.version>1.8.0</wro4j.version>
+		<angularjs.version>1.4.9</angularjs.version>
+		<bootstrap.version>3.3.7-1</bootstrap.version>
+		<jquery.version>2.2.4</jquery.version>
+		<docker-maven-plugin.version>0.4.13</docker-maven-plugin.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angularjs</artifactId>
+			<version>${angularjs.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>${docker-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+						<configuration>
+							<imageName>${project.artifactId}</imageName>
+							<dockerDirectory>${project.basedir}/docker</dockerDirectory>
+							<resources>
+								<resource>
+									<targetPath>/</targetPath>
+									<directory>${project.build.directory}</directory>
+									<include>${project.build.finalName}.jar</include>
+								</resource>
+							</resources>
+							<forceTags>true</forceTags>
+							<imageTags>
+								<imageTag>latest</imageTag>
+							</imageTags>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
