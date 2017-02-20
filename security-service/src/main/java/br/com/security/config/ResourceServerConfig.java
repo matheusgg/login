@@ -1,9 +1,10 @@
 package br.com.security.config;
 
+import static org.springframework.core.Ordered.HIGHEST_PRECEDENCE;
+
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.web.cors.CorsConfiguration;
@@ -23,10 +24,6 @@ public class ResourceServerConfig {
 	 * The constant ALLOWED_WILD_CARD.
 	 */
 	private static final String ALLOWED_WILD_CARD = "*";
-	/**
-	 * The constant HIGHEST_ORDER.
-	 */
-	private static final int HIGHEST_ORDER = 0;
 
 	/**
 	 * Password encoder b crypt password encoder.
@@ -53,7 +50,7 @@ public class ResourceServerConfig {
 		config.addAllowedMethod(ALLOWED_WILD_CARD);
 		source.registerCorsConfiguration("/**", config);
 		final FilterRegistrationBean registrationBean = new FilterRegistrationBean(new CorsFilter(source));
-		registrationBean.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		registrationBean.setOrder(HIGHEST_PRECEDENCE);
 		return registrationBean;
 	}
 
